@@ -47,7 +47,7 @@ async def local(ctx, url):
 
     stock = s.get(stockendpoint)#, proxies=proxies, verify=False)
     print(stock.status_code)
-    if stock.status_code == 429 or 403:
+    if stock.status_code == 429 or stock.status_code == 403:
         embed=discord.Embed(title="Foots Stock Checker", description="Guide to Check Stock for Footlocker & EU", color=0xff0a0a)
         embed.set_author(name="name/whatever - Stock Checker", url="twitter/whatever", icon_url="https://cdn.discordapp.com/icons/781719579859746836/a5bdb7cd356631a16bddd4f96a151b70.webp?size=128")
         embed.add_field(name="Error", value=f"Cannot connect to site **{stock.status_code}**", inline=False)
@@ -60,8 +60,6 @@ async def local(ctx, url):
             if sku == line['sku']:
                 productcode = line['code']
                 break
-            else:
-                pass
     
         global availsizes, availids
         availsizes = []
