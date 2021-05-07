@@ -43,7 +43,7 @@ async def local(ctx, url):
     region = url.split('footlocker.')[-1].split("/")[0]
     print(region)
     print(region in new_regions)
-    stockendpoint = f"https://www.footlocker.{region}/api/products/pdp/{sku}.html"
+    stockendpoint = f"https://www.footlocker.{region}/api/products/pdp/{sku}"
 
     stock = s.get(stockendpoint)#, proxies=proxies, verify=False)
     print(stock.status_code)
